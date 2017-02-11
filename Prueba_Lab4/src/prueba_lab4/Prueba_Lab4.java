@@ -12,14 +12,13 @@ public class Prueba_Lab4 {
         int Puntos, Edad;
         ArrayList Jugadores = new ArrayList();
         int Opcion = 0;
-        while (Opcion != 5) {
+        while (Opcion != 4) {
             Opcion = Integer.parseInt(JOptionPane.showInputDialog("Bienvenido a Personas: \n"
                     + "Menú Personas\n"
                     + "1.- Agregar Personas\n"
                     + "2.- Eliminar Personas\n"
                     + "3.- Listar Personas\n"
-                    + "4.- Jugar\n"
-                    + "5.- Salir\n"
+                    + "4.- Salir\n"
                     + "Eliga una de las opciones: "));
 
             switch (Opcion) {
@@ -48,13 +47,9 @@ public class Prueba_Lab4 {
                     JOptionPane.showMessageDialog(null, Jugadores);
 
                     break;
-                case 4:
-                    
-                    ImprimirTablero(tablero);
-                    
-                    break;
             } // Fin switch
         }
+        ImprimirTablero(tablero);
     }
 
     public static void ImprimirTablero(Pieza[][] tablero) {
@@ -67,11 +62,14 @@ public class Prueba_Lab4 {
     }
     
     static Pieza[][] Comer(Pieza [][] tablero, int X, int Y){
+        boolean Turno = true; // true ---> Turno blanco y false ---> Turno negro
         for (int i = 0; i < tablero.length; i++) {
             for (int j = 0; j < tablero[i].length; j++) {
-                if (X == i && Y == j) {
+                if (X == i && Y == j && tablero[i + 2][Y].getColor().equals("negro") && Turno == true) {
                     if (tablero[i + 2][Y] instanceof Arquero) {
-                        
+                        if (tablero[i + 2][Y].getColor().equals("negro")) {
+                            
+                        }
                     }
                     if (tablero[i + 2][Y] instanceof Rey) {
                         
@@ -88,6 +86,8 @@ public class Prueba_Lab4 {
                     if (tablero[i + 2][Y] instanceof Duende) {
                         
                     }
+                } else{
+                    JOptionPane.showMessageDialog(null, "No puede seleccionar una pieza del oponente");
                 }
             }
         }
